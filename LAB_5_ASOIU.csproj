@@ -68,13 +68,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddEmpl.aspx" />
     <Content Include="AddLesson.aspx" />
     <Content Include="AddProgress.aspx" />
     <Content Include="AdminLK.aspx" />
+    <Content Include="AppHandle.aspx" />
+    <Content Include="ChildManage.aspx" />
     <Content Include="CreateApplication.aspx" />
     <Content Include="CreateReview.aspx" />
     <Content Include="EditProfileParent.aspx" />
     <Content Include="EmployeeLK.aspx" />
+    <Content Include="EmpManage.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="InfoAboutChild.aspx" />
     <Content Include="InfoAboutEmployees.aspx" />
@@ -84,6 +88,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEmpl.aspx.cs">
+      <DependentUpon>AddEmpl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddEmpl.aspx.designer.cs">
+      <DependentUpon>AddEmpl.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddLesson.aspx.cs">
       <DependentUpon>AddLesson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,6 +115,20 @@
     </Compile>
     <Compile Include="AdminLK.aspx.designer.cs">
       <DependentUpon>AdminLK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppHandle.aspx.cs">
+      <DependentUpon>AppHandle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppHandle.aspx.designer.cs">
+      <DependentUpon>AppHandle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChildManage.aspx.cs">
+      <DependentUpon>ChildManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChildManage.aspx.designer.cs">
+      <DependentUpon>ChildManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateApplication.aspx.cs">
       <DependentUpon>CreateApplication.aspx</DependentUpon>
@@ -137,6 +162,13 @@
     </Compile>
     <Compile Include="EmployeeLK.aspx.designer.cs">
       <DependentUpon>EmployeeLK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmpManage.aspx.cs">
+      <DependentUpon>EmpManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpManage.aspx.designer.cs">
+      <DependentUpon>EmpManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
