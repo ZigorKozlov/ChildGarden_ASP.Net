@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="LAB_5_ASOIU.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            border: 2px solid #808080;
+        }
+        .auto-style2 {
+            height: 151px;
+        }
+        .auto-style3 {
+            height: 530px;
+        }
+        .auto-style4 {
+            height: 151px;
+            width: 249px;
+        }
+        .auto-style5 {
+            height: 530px;
+            width: 249px;
+        }
+        .auto-style6 {
+            height: 151px;
+            width: 1286px;
+        }
+        .auto-style7 {
+            width: 100%;
+        }
+        .auto-style8 {
+            width: 523px;
+        }
+        .auto-style9 {
+            width: 1189px;
+        }
+        .auto-style12 {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="form1" runat="server">
+        <table class="auto-style1" border="1">
+            <tr>
+                <td class="auto-style4">
+                    <asp:Image ID="Image1" runat="server" Height="193px" Width="272px" ImageUrl="resources/logo.jpg" />
+                </td>
+                <td class="auto-style6" align="center">
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="XX-Large" Text="       Детский сад &quot;Малыш&quot;"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <table class="auto-style7">
+                        <tr>
+                            <td class="auto-style9">
+                                <asp:Label ID="Label_login" runat="server" Text="Логин:"></asp:Label>
+                            </td>
+                            <td class="auto-style8">
+                                <asp:TextBox ID="TextBox_login" runat="server" Width="312px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style9">
+                                <asp:Label ID="Label_password" runat="server" Text="Пароль:"></asp:Label>
+                            </td>
+                            <td class="auto-style8">
+                                <asp:TextBox ID="TextBox_password" runat="server" Width="313px" type="password"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style9">
+                                <asp:Button ID="Button1" runat="server" Text="Регистрация" OnClick="Button1_Click" />
+                            </td>
+                            <td class="auto-style8">
+                                <asp:Button ID="Button2" runat="server" Text="Вход" OnClick="Button2_Click" />
+                                <asp:Button ID="Button3" runat="server" Text="Выход" OnClick="Button3_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style9">
+                                <asp:Label ID="Label_hello" runat="server" Text="Здравствуйте!"></asp:Label>
+                            </td>
+                            <td class="auto-style8">
+                                <asp:Label ID="Label_error" runat="server" Text="Ошибка ввода!!!"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style12" RepeatDirection="Horizontal">
+                                    <asp:ListItem Selected="True">Родитель</asp:ListItem>
+                                    <asp:ListItem>Сотрудник</asp:ListItem>
+                                    <asp:ListItem>Администратор</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style5" valign="Top">
+                    <table class="auto-style7" >
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">Главная</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Новости</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Информация о сотрудниках</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" Visible="False">Личный кабинет</asp:LinkButton>
+                            </td>
+                        </tr>
+                        </table>
+                </td>
+                <td class="auto-style3" colspan="2" valign="Top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

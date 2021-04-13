@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ASOUI2_lab4SQL" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-R903RH3\SQLEXPRESS;Initial Catalog=ASOUI2_lab4SQL;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ASOUI2_lab4SQLConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AgeGroup" Member="AgeGroup">
+    <Type Name="AgeGroup">
+      <Column Name="ID_AgeGroup" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="AgeInterval" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Association Name="AgeGroup_Groups" Member="Groups" ThisKey="ID_AgeGroup" OtherKey="ID_AgeGroup" Type="Groups" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Applications" Member="Applications">
+    <Type Name="Applications">
+      <Column Name="ID_app" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Surname_ch" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Name_ch" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Patronymic_ch" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Achievements" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="[Privileges]" Member="Privileges" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Age_ch" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ID_parent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Parents_Applications" Member="Parents" ThisKey="ID_parent" OtherKey="ID_parent" Type="Parents" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Children" Member="Children">
+    <Type Name="Children">
+      <Column Name="ID_child" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ID_group" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Children_ParentType" Member="ParentType" ThisKey="ID_child" OtherKey="ID_child" Type="ParentType" />
+      <Association Name="Children_Progress" Member="Progress" ThisKey="ID_child" OtherKey="ID_child" Type="Progress" />
+      <Association Name="Groups_Children" Member="Groups" ThisKey="ID_group" OtherKey="ID_group" Type="Groups" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employees">
+      <Column Name="ID_employee" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="PhotoURL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Employees_Groups" Member="Groups" ThisKey="ID_employee" OtherKey="ID_employee" Type="Groups" />
+      <Association Name="Employees_Lesson" Member="Lesson" ThisKey="ID_employee" OtherKey="ID_employee" Type="Lesson" />
+      <Association Name="Employees_News" Member="News" ThisKey="ID_employee" OtherKey="ID_employee" Type="News" />
+      <Association Name="Employees_Reviews" Member="Reviews" ThisKey="ID_employee" OtherKey="ID_employee" Type="Reviews" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Groups" Member="Groups">
+    <Type Name="Groups">
+      <Column Name="ID_group" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ID_employee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AgeGroup" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Groups_Children" Member="Children" ThisKey="ID_group" OtherKey="ID_group" Type="Children" />
+      <Association Name="AgeGroup_Groups" Member="AgeGroup" ThisKey="ID_AgeGroup" OtherKey="ID_AgeGroup" Type="AgeGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Employees_Groups" Member="Employees" ThisKey="ID_employee" OtherKey="ID_employee" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lesson" Member="Lesson">
+    <Type Name="Lesson">
+      <Column Name="ID_lesson" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Difficulty" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ID_employee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_LessonType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IndividualLesson" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Room" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="upsize_ts" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="Lesson_Progress" Member="Progress" ThisKey="ID_lesson" OtherKey="ID_lesson" Type="Progress" />
+      <Association Name="Employees_Lesson" Member="Employees" ThisKey="ID_employee" OtherKey="ID_employee" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="LessonType_Lesson" Member="LessonType" ThisKey="ID_LessonType" OtherKey="ID_LessonType" Type="LessonType" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Room_Lesson" Member="Room" ThisKey="ID_Room" OtherKey="ID_Room" Type="Room" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LessonType" Member="LessonType">
+    <Type Name="LessonType">
+      <Column Name="ID_LessonType" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="LessonType_Lesson" Member="Lesson" ThisKey="ID_LessonType" OtherKey="ID_LessonType" Type="Lesson" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News" Member="News">
+    <Type Name="News">
+      <Column Name="ID_news" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Head" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statement" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ID_employee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employees_News" Member="Employees" ThisKey="ID_employee" OtherKey="ID_employee" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parents" Member="Parents">
+    <Type Name="Parents">
+      <Column Name="ID_parent" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Parents_Applications" Member="Applications" ThisKey="ID_parent" OtherKey="ID_parent" Type="Applications" />
+      <Association Name="Parents_ParentType" Member="ParentType" ThisKey="ID_parent" OtherKey="ID_parent" Type="ParentType" />
+      <Association Name="Parents_Reviews" Member="Reviews" ThisKey="ID_parent" OtherKey="ID_parent" Type="Reviews" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParentType" Member="ParentType">
+    <Type Name="ParentType">
+      <Column Name="ID_child" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_parent" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Association Name="Children_ParentType" Member="Children" ThisKey="ID_child" OtherKey="ID_child" Type="Children" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Parents_ParentType" Member="Parents" ThisKey="ID_parent" OtherKey="ID_parent" Type="Parents" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Progress" Member="Progress">
+    <Type Name="Progress">
+      <Column Name="ID_child" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_lesson" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Behavior" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Children_Progress" Member="Children" ThisKey="ID_child" OtherKey="ID_child" Type="Children" IsForeignKey="true" />
+      <Association Name="Lesson_Progress" Member="Lesson" ThisKey="ID_lesson" OtherKey="ID_lesson" Type="Lesson" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reviews" Member="Reviews">
+    <Type Name="Reviews">
+      <Column Name="ID_review" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ID_parent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_employee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Employees_Reviews" Member="Employees" ThisKey="ID_employee" OtherKey="ID_employee" Type="Employees" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Parents_Reviews" Member="Parents" ThisKey="ID_parent" OtherKey="ID_parent" Type="Parents" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Room" Member="Room">
+    <Type Name="Room">
+      <Column Name="ID_Room" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Square" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Room_Lesson" Member="Lesson" ThisKey="ID_Room" OtherKey="ID_Room" Type="Lesson" />
+    </Type>
+  </Table>
+</Database>
